@@ -1,27 +1,16 @@
 package teammayankteli1307.com.alaramclock;
 
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
-import java.util.Random;
-
-public class RingtonePlayingService extends Service {
-
+public class QuestionAskingService extends Service {
     private boolean isRunning;
     static PendingIntent pendingIntent;
 
@@ -39,7 +28,7 @@ public class RingtonePlayingService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Intent intent11 = new Intent(getApplicationContext(), AlaramOffActivity.class);
+        Intent intent11 = new Intent(getApplicationContext(), QuestionActivity.class);
 
 
         String state = intent.getExtras().getString("extra");
@@ -73,15 +62,16 @@ public class RingtonePlayingService extends Service {
             //   notificationHelper.getManager().notify(1, nb.build());
 
 
-            pendingIntent = PendingIntent.getActivity(this, 0, intent11, 0);
+           pendingIntent = PendingIntent.getActivity(this, 0, intent11, 0);
 
-            NotificationHelper notificationHelper = new NotificationHelper(this);
-            NotificationCompat.Builder nb = notificationHelper.getChannelNotification();
+           NotificationHelper notificationHelper = new NotificationHelper(this);
+           NotificationCompat.Builder nb = notificationHelper.getChannelNotification2();
             notificationHelper.getManager().notify(1, nb.build());
             mMediaPlayer = MediaPlayer.create(getApplicationContext(),R.raw.ringtone1);
 
             mMediaPlayer.setLooping(true);
             mMediaPlayer.start();
+
 
 
         } else if (!this.isRunning && startId == 0) {

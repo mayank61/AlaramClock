@@ -23,12 +23,23 @@
             android:id="@+id/timeselect"
             android:padding="16dp"
             android:background="#FFFFFF"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Select Mode of Alaram OFF"
+            android:layout_gravity="center_horizontal"
+            android:textSize="22sp"
+            android:textColor="#EFF4F4"
+            android:gravity="center_horizontal"
+            android:layout_margin="15dp"
+            android:id="@+id/modetext"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:layout_margin="16dp"
+            android:padding="8dp"
+            android:layout_margin="8dp"
             android:orientation="horizontal">
 
             <Button
@@ -38,16 +49,17 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="5dp"
-                android:text="Alaram ON" />
-
+                android:text="By Question" />
             <Button
-                android:id="@+id/offbutton"
+                android:id="@+id/onbutton2"
                 android:layout_width="0dp"
+                android:background="#FFFFFF"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="5dp"
-                android:background="#FFFFFF"
-                android:text="Alaram OFF" />
+                android:text="By OFF Button" />
+
+
         </LinearLayout>
 
         <TextView
@@ -60,5 +72,18 @@
             android:textColor="#FFFFFF"
 
             android:textSize="28sp" />
+
+        <Button
+            android:id="@+id/offbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+
+            android:layout_weight="1"
+
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="15dp"
+            android:background="#FFFFFF"
+            android:text="Cancel Alaram" />
+
     </LinearLayout>
 </RelativeLayout>

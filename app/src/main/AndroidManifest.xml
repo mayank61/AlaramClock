@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="teammayankteli1307.com.alaramclock">
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-permission android:name="android.permission.SET_ALARM"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <application
         android:allowBackup="true"
@@ -9,10 +13,9 @@
         android:roundIcon="@drawable/timerbackg"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <receiver
-            android:name=".MyReceiver"
-            android:enabled="true"
-            android:exported="false" />
+        <activity android:name=".AlaramOffActivity" />
+        <activity android:name=".QuestionActivity" />
+
 
         <activity android:name=".SetAlaram" />
         <activity android:name=".StopWatch" />
@@ -25,10 +28,24 @@
             </intent-filter>
         </activity>
 
+        <receiver android:name=".MyReceiver"
+            android:process=":remote"
+            >
 
-        <service android:name=".RingtonePlayingService"
-            android:enabled="true">
-        </service>
+        </receiver>
+        <receiver android:name=".QuestionReciver"
+            android:process=":remote"
+            >
+
+        </receiver>
+
+
+        <service
+            android:name=".RingtonePlayingService"
+            android:enabled="true" />
+        <service
+            android:name=".QuestionAskingService"
+            android:enabled="true" />
     </application>
 
 </manifest>

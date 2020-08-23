@@ -35,8 +35,15 @@ public class NotificationHelper extends ContextWrapper {
     public NotificationCompat.Builder getChannelNotification() {
 
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
-                .setContentTitle("Alarm!").setAutoCancel(true)
-                .setContentText("Your AlarmManager is working.").setContentIntent(RingtonePlayingService.pendingIntent).setAutoCancel(true)
+                .setContentTitle("!!!!Alarm!!!!").setAutoCancel(true)
+                .setContentText("Click Me To Stop !!!!!").setContentIntent(RingtonePlayingService.pendingIntent).setAutoCancel(true)
+                .setSmallIcon(R.drawable.ic_baseline_call_24);
+    }
+    public NotificationCompat.Builder getChannelNotification2() {
+
+        return new NotificationCompat.Builder(getApplicationContext(), channelID)
+                .setContentTitle("!!!!Alarm!!!!").setAutoCancel(true)
+                .setContentText("Click Me And Answer to Stop !!!!!").setContentIntent(QuestionAskingService.pendingIntent).setAutoCancel(true)
                 .setSmallIcon(R.drawable.ic_baseline_call_24);
     }
 }

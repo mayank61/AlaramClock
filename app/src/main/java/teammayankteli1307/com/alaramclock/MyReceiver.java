@@ -18,17 +18,20 @@ public class MyReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        String state = intent.getExtras().getString("extra");
-        Log.e("MyActivity", "In the receiver with " + state);
 
 
 
-        Intent serviceIntent = new Intent(context,RingtonePlayingService.class);
-      serviceIntent.putExtra("extra", state);
+            String state = intent.getExtras().getString("extra");
 
 
-     context.startService(serviceIntent);
-     ////   Intent intent2 = new Intent(context,SetAlaram.class);
-      //  context.startActivity(intent2);
-    }
+
+            Intent serviceIntent = new Intent(context, RingtonePlayingService.class);
+            serviceIntent.putExtra("extra", state);
+
+
+
+            context.startService(serviceIntent);
+            ////   Intent intent2 = new Intent(context,SetAlaram.class);
+        }//  context.startActivity(intent2);
+
 }
