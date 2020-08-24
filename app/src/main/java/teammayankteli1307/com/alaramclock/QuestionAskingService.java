@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
 public class QuestionAskingService extends Service {
-    private boolean isRunning;
+    private boolean isRunning=false;
     static PendingIntent pendingIntent;
 
     static MediaPlayer mMediaPlayer;
@@ -21,7 +21,7 @@ public class QuestionAskingService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        Log.e("MyActivity", "In the Richard service");
+
         return null;
     }
 
@@ -52,7 +52,7 @@ public class QuestionAskingService extends Service {
         if (!this.isRunning && startId == 1) {
 
 
-            pendingIntent = PendingIntent.getActivity(this, 0, intent11, 0);
+            pendingIntent = PendingIntent.getActivity(this, 1, intent11, 0);
 
             NotificationHelper notificationHelper = new NotificationHelper(this);
             NotificationCompat.Builder nb = notificationHelper.getChannelNotification2();

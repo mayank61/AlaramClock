@@ -97,7 +97,7 @@ public class CountTimer extends AppCompatActivity {
         pauseTimer();
         timetv.setTextColor(Color.parseColor("#0B0A0A"));
         paused=true;
-        ringtone.stop();
+
 
         ////   startpause.setVisibility(View.VISIBLE);
         //  reset.setVisibility(View.INVISIBLE);

@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">AlaramClock</string>
     <string name="select_mode_of_alaram_off">Select Mode of Alaram OFF</string>
+    <string name="ques">\" Q.  How Many States And UT in India ?\"</string>
+    <string name="ans1">
+        28 States and 9 UT
+    </string>
+    <string name="ans2">
+          28 States and 8 UT
+    </string>
+    <string name="ans3">
+          29 States and 9 UT
+    </string>
+    <string name="ans4">
+          29 States and 8 UT
+    </string>
 </resources>

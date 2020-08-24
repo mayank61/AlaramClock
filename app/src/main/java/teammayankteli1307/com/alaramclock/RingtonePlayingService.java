@@ -32,7 +32,6 @@ public class RingtonePlayingService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        Log.e("MyActivity", "In the Richard service");
         return null;
     }
 
@@ -74,7 +73,7 @@ public class RingtonePlayingService extends Service {
             //   notificationHelper.getManager().notify(1, nb.build());
 
 
-            pendingIntent = PendingIntent.getActivity(this, 0, intent11, 0);
+            pendingIntent = PendingIntent.getActivity(this, 1, intent11, 0);
 
             NotificationHelper notificationHelper = new NotificationHelper(this);
             NotificationCompat.Builder nb = notificationHelper.getChannelNotification();

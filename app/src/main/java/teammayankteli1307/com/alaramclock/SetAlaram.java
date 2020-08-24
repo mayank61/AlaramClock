@@ -67,6 +67,7 @@ public class SetAlaram extends AppCompatActivity implements TimePickerDialog.OnT
         notiButton = findViewById(R.id.onbutton2);
         this.context = this;
         sharedPreferencesring = getSharedPreferences("Alaram", MODE_PRIVATE);
+        sharedPreferencesring = getSharedPreferences("type", MODE_PRIVATE);
         if (sharedPreferencesring.contains("Alaramonn")) {
             alarmTextView.setText(sharedPreferencesring.getString("Alaramonn", null));
         } else {
@@ -94,14 +95,10 @@ public class SetAlaram extends AppCompatActivity implements TimePickerDialog.OnT
                     m1MediaPlayer.stop();
                 }
 
-
-                calendar.add(Calendar.SECOND, 3);
-
-
                 calendar.set(Calendar.HOUR_OF_DAY, hour);
                 calendar.set(Calendar.MINUTE, minute);
 
-                myIntent1.putExtra("extra", "yes");
+
                 if (ringgroup.getCheckedRadioButtonId() == ring1.getId()) {
                     myIntent1.putExtra("Ring", 1);
                 } else if (ringgroup.getCheckedRadioButtonId() == ring2.getId()) {
@@ -123,17 +120,19 @@ public class SetAlaram extends AppCompatActivity implements TimePickerDialog.OnT
                     myIntent1.putExtra("Ring", 7);
 
                 }
-
-
-                pending_intent = PendingIntent.getBroadcast(SetAlaram.this, 0, myIntent1, PendingIntent.FLAG_UPDATE_CURRENT);
-
-                alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() , pending_intent);
+                myIntent1.putExtra("extra", "yes");
                 SharedPreferences.Editor editor = sharedPreferencesring.edit();
 
                 editor.putString("Alaramonn", setAlarmText(calendar));
+                editor.putString("type", "Ques");
                 editor.apply();
 
                 setAlarmText(calendar);
+
+                pending_intent = PendingIntent.getBroadcast(SetAlaram.this, 0, myIntent1, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pending_intent);
+                Toast.makeText(getApplicationContext(), "Your Alaram is Set Now", Toast.LENGTH_SHORT).show();
 
 
             }
@@ -153,14 +152,8 @@ public class SetAlaram extends AppCompatActivity implements TimePickerDialog.OnT
                     m1MediaPlayer.stop();
                 }
 
-
-                calendar.add(Calendar.SECOND, 3);
-
-
                 calendar.set(Calendar.HOUR_OF_DAY, hour);
                 calendar.set(Calendar.MINUTE, minute);
-
-                myIntent.putExtra("extra", "yes");
 
 
                 if (ringgroup.getCheckedRadioButtonId() == ring1.getId()) {
@@ -184,16 +177,19 @@ public class SetAlaram extends AppCompatActivity implements TimePickerDialog.OnT
                     myIntent.putExtra("Ring", 7);
 
                 }
-
-                pending_intent = PendingIntent.getBroadcast(SetAlaram.this, 0, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-                alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pending_intent);
+                myIntent.putExtra("extra", "yes");
                 SharedPreferences.Editor editor = sharedPreferencesring.edit();
 
                 editor.putString("Alaramonn", setAlarmText(calendar));
+                editor.putString("type", "Noti");
                 editor.apply();
 
                 setAlarmText(calendar);
+
+                pending_intent = PendingIntent.getBroadcast(SetAlaram.this, 0, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pending_intent);
+                Toast.makeText(getApplicationContext(), "Your Alaram is Set Now", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -215,33 +211,43 @@ public class SetAlaram extends AppCompatActivity implements TimePickerDialog.OnT
                     return;
                 }
                 if (!alarmTextView.getText().toString().isEmpty()) {
-                    calendar.add(Calendar.SECOND, 3);
+
+                    if (sharedPreferencesring.getString("type", null).equals("Ques")) {
+                        calendar.set(Calendar.HOUR_OF_DAY, hour);
+                        calendar.set(Calendar.MINUTE, minute);
 
 
-                    calendar.set(Calendar.HOUR_OF_DAY, hour);
-                    calendar.set(Calendar.MINUTE, minute);
-                    myIntent.putExtra("extra", "no");
-                    myIntent1.putExtra("Ring", 1);
+                        myIntent1.putExtra("extra", "no");
+                        myIntent1.putExtra("Ring", 1);
 
-                    pending_intent = PendingIntent.getBroadcast(SetAlaram.this, 0, myIntent1, PendingIntent.FLAG_UPDATE_CURRENT);
+                        pending_intent = PendingIntent.getBroadcast(SetAlaram.this, 0, myIntent1, PendingIntent.FLAG_UPDATE_CURRENT);
 
-                    alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() * 1000 * 50 * 24 * 12 * 30 * 60, pending_intent);
-                    sendBroadcast(myIntent);
+                        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() * 50 * 24 * 12 * 30 * 60, AlarmManager.INTERVAL_DAY, pending_intent);
+                        alarmTextView.setText("Alaram Cancelled");
+                        SharedPreferences.Editor editor = sharedPreferencesring.edit();
+                        editor.remove("Alaramonn");
+                        editor.remove("type");
+                        editor.apply();
+                        return;
+                    }
 
-                    alarmManager.cancel(pending_intent);
+                    // sendBroadcast(myIntent);
 
+                    //  alarmManager.cancel(pending_intent);
+                    myIntent.putExtra("Ring", 1);
                     myIntent.putExtra("extra", "no");
                     SharedPreferences.Editor editor = sharedPreferencesring.edit();
                     editor.remove("Alaramonn");
+                    editor.remove("type");
                     editor.apply();
                     setAlarmText(calendar);
                     alarmTextView.setText("Alaram Cancelled");
                     pending_intent = PendingIntent.getBroadcast(SetAlaram.this, 0, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-                    alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() * 1000 * 12 * 31 * 24 * 60 * 60, pending_intent);
-                    sendBroadcast(myIntent);
+                    alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() * 1000 * 12 * 31 * 24 * 60 * 60, AlarmManager.INTERVAL_DAY, pending_intent);
+                    // sendBroadcast(myIntent);
 
-                    alarmManager.cancel(pending_intent);
+                    //  alarmManager.cancel(pending_intent);
                 }
             }
         });
@@ -250,6 +256,11 @@ public class SetAlaram extends AppCompatActivity implements TimePickerDialog.OnT
             public void onClick(View view) {
                 DialogFragment timePicker = new TimePickerFragment();
                 timePicker.show(getSupportFragmentManager(), "time picker");
+                if (!(m1MediaPlayer == null)) {
+                    m1MediaPlayer.reset();
+                    m1MediaPlayer.stop();
+                }
+
             }
         });
 
