@@ -40,6 +40,7 @@ public class RingtonePlayingService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Intent intent11 = new Intent(getApplicationContext(), AlaramOffActivity.class);
+        int a = intent.getIntExtra("ring", 0);
 
 
         String state = intent.getExtras().getString("extra");
@@ -78,7 +79,26 @@ public class RingtonePlayingService extends Service {
             NotificationHelper notificationHelper = new NotificationHelper(this);
             NotificationCompat.Builder nb = notificationHelper.getChannelNotification();
             notificationHelper.getManager().notify(1, nb.build());
-            mMediaPlayer = MediaPlayer.create(getApplicationContext(),R.raw.ringtone1);
+            if (a == 1) {
+                mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ringtone1);
+
+            } else if (a == 2) {
+                mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ringtone2);
+            } else if (a == 3) {
+                mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ringtone3);
+            } else if (a == 4) {
+                mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ringtone4);
+            } else if (a == 5) {
+                mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ringtone5);
+            } else if (a == 6) {
+                mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ringtone6);
+            } else if (a == 7) {
+                mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ringtone7);
+            }
+            else {
+                mMediaPlayer = MediaPlayer.create(getApplicationContext(),R.raw.tictok);
+            }
+
 
             mMediaPlayer.setLooping(true);
             mMediaPlayer.start();

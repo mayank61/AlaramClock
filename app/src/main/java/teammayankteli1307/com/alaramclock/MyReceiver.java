@@ -23,12 +23,12 @@ public class MyReceiver extends BroadcastReceiver {
 
             String state = intent.getExtras().getString("extra");
 
-
+        int a  = intent.getIntExtra("Ring",0);
 
             Intent serviceIntent = new Intent(context, RingtonePlayingService.class);
             serviceIntent.putExtra("extra", state);
 
-
+serviceIntent.putExtra("ring",a);
 
             context.startService(serviceIntent);
             ////   Intent intent2 = new Intent(context,SetAlaram.class);

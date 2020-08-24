@@ -6,57 +6,73 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
     tools:context=".SetAlaram">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alaram Clock"
+        android:gravity="center_horizontal"
+        android:padding="22dp"
+        android:textSize="36sp"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:fontFamily="cursive"
+        android:textColor="@color/Red"/>
 
 
     <LinearLayout
+        android:id="@+id/linnnnn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:orientation="vertical">
+
         <Button
+            android:id="@+id/timeselect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:text="Select Time"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/timeselect"
+            android:layout_marginTop="10dp"
+            android:background="#FFFFFF"
             android:padding="16dp"
-            android:background="#FFFFFF"/>
+            android:text="Select Time" />
+
         <TextView
+            android:id="@+id/modetext"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Select Mode of Alaram OFF"
             android:layout_gravity="center_horizontal"
-            android:textSize="22sp"
-            android:textColor="#EFF4F4"
-            android:gravity="center_horizontal"
             android:layout_margin="15dp"
-            android:id="@+id/modetext"/>
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/select_mode_of_alaram_off"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="22sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
             android:layout_margin="8dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="8dp">
 
             <Button
                 android:id="@+id/onbutton"
                 android:layout_width="0dp"
-                android:background="#FFFFFF"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
                 android:text="By Question" />
+
             <Button
                 android:id="@+id/onbutton2"
                 android:layout_width="0dp"
-                android:background="#FFFFFF"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
                 android:text="By OFF Button" />
 
 
@@ -71,19 +87,105 @@
             android:text="Alaram At :"
             android:textColor="#FFFFFF"
 
-            android:textSize="28sp" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/offbutton"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
 
-            android:layout_weight="1"
-
             android:layout_gravity="center_horizontal"
+
             android:layout_margin="15dp"
+            android:layout_weight="1"
             android:background="#FFFFFF"
             android:text="Cancel Alaram" />
 
     </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linnnnn"
+        android:layout_marginTop="16dp">
+
+        <RadioGroup
+            android:id="@+id/ringgroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+android:checkedButton="@id/ring1"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/ring1"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:text="Ringtone 1" />
+
+            <RadioButton
+                android:id="@+id/ring2"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="Ringtone 2" />
+
+            <RadioButton
+                android:id="@+id/ring3"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:text="Ringtone 3" />
+
+            <RadioButton
+                android:id="@+id/ring4"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="Ringtone 4" />
+
+            <RadioButton
+                android:id="@+id/ring5"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:text="Ringtone 5" />
+
+            <RadioButton
+                android:id="@+id/ring6"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:text="Ringtone 6" />
+
+            <RadioButton
+                android:id="@+id/ring7"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="Ringtone 7" />
+        </RadioGroup>
+
+    </ScrollView>
 </RelativeLayout>
