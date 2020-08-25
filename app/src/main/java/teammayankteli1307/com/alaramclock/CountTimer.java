@@ -73,6 +73,10 @@ public class CountTimer extends AppCompatActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(second.getText().toString().isEmpty())
+                {
+                    return;
+                }
                 resetTimer();
                 minute.getText().clear();
                 second.getText().clear();
