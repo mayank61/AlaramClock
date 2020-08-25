@@ -77,6 +77,7 @@ public class CountTimer extends AppCompatActivity {
                 {
                     return;
                 }
+                startpause.setEnabled(true);
                 resetTimer();
                 minute.getText().clear();
                 second.getText().clear();
@@ -132,6 +133,7 @@ public class CountTimer extends AppCompatActivity {
                 mruning = false;
                 //startpause.setVisibility(View.INVISIBLE);
                 startpause.setText("Start");
+                startpause.setEnabled(false);
                 timetv.setTextColor(Color.parseColor("#0B0A0A"));
                 //   reset.setVisibility(View.VISIBLE);
               //  Uri alaramuri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
